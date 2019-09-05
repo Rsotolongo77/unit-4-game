@@ -33,8 +33,14 @@
         <h2>Wins: <span id="wins"></span></h2>
         <h2>Losses: <span id="losses"></span></h2>
         <h2 class=""></h2>
-        <button type="button" class="btn btn-outline-danger mt-2">Restart Game</button>
+        <button id="restart">Restart Game</button>
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <!--crystal images with random assigned values-->
     <div id="crystals"></div>
@@ -50,27 +56,18 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script type="text/javascript">
-
-
         $(document).ready(function () {
-
             //create variables//
             var wins = 0;
             var losses = 0;
             var counter = 0;
-
             //generate random number for user to match//
-            
-            var targetNumber= []; 
+
+            var targetNumber = [];
             function generateTargetNumber() {
-
-            targetNumber = Math.floor(Math.random() * (120 - 19) + 19);
-
+                targetNumber = Math.floor(Math.random() * (120 - 19) + 19);
             }
-
             generateTargetNumber();
-
-            
 
             //Hook into html to render random number results and update accordingly//
             function updatedisplay() {
@@ -79,19 +76,13 @@
                 $("#losses").text(losses);
                 $("#current-user-score").text(counter);
             }
-
             updatedisplay();
 
 
-
             function resetScores() {
-
                 counter = 0;
                 generateTargetNumber();
             };
-
-
-
             //generate random number from 1-12 and assign 4 into new array//
             var gemArray = []
             while (gemArray.length < 4) {
@@ -99,37 +90,29 @@
                 if (gemArray.indexOf(r) === -1) gemArray.push(r);
             }
             console.log(gemArray);
-
-
             //create for loop that will assign each crystal a random number from new array of 4//
             for (var i = 0; i < gemArray.length; i++) {
-
                 //crystal img tag created//
                 var imageCrystal = $("<img>");
-
                 //each new crystal tag is also assigned a new class//
                 imageCrystal.addClass("crystal-image");
-
                 //actual image is attached to tag//
                 imageCrystal.attr("src", "assets/images/gem.png");
-
                 //random value from array is assigned//
                 imageCrystal.attr("data-crystalvalue", gemArray[i]);
-
                 //attributes are combined and then rendered to page via ID//
                 $("#crystals").append(imageCrystal);
             }
 
 
 
+
             //initiate on-click for desired process once image is clicked//
             $(".crystal-image").on("click", function () {
-
                 // Determining the crystal's value requires us to extract the value from the data attribute.
                 // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
                 // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
                 // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
-
                 var crystalValue = ($(this).attr("data-crystalvalue"));
                 crystalValue = parseInt(crystalValue);
                 // We then add the crystalValue to the user's "counter" which is a global variable.
@@ -137,35 +120,28 @@
                 counter += crystalValue;
                 console.log(counter);
                 updatedisplay();
-
-
-
-
                 if (counter === targetNumber) {
                     wins++;
                     updatedisplay();
+                    $(".crystal-image").off("click");
 
-
-
+                    
 
 
                 }
-
                 else if (counter >= targetNumber) {
                     losses++;
-                    resetScores();
+                    updatedisplay();
+                    $(".crystal-image").off("click");
+
+                    
+
 
                 }
-
-
-
 
 
             });
-
         });
-
-
     </script>
 
 
