@@ -58,21 +58,41 @@
             var wins = 0;
             var losses = 0;
             var counter = 0;
-            var targetNumber = Math.floor(Math.random() * (120 - 19) + 19);
+
+            //generate random number for user to match//
+            
+            var targetNumber= []; 
+            function generateTargetNumber() {
+
+            targetNumber = Math.floor(Math.random() * (120 - 19) + 19);
+
+            }
+
+            generateTargetNumber();
+
+            
+
+            //Hook into html to render random number results and update accordingly//
+            function updatedisplay() {
+                $("#number-to-match").text(targetNumber);
+                $("#wins").text(wins);
+                $("#losses").text(losses);
+                $("#current-user-score").text(counter);
+            }
+
+            updatedisplay();
 
 
 
+            function resetScores() {
+
+                counter = 0;
+                generateTargetNumber();
+            };
 
 
 
-            //sink into html to render random number results//
-
-            $("#number-to-match").text(targetNumber);
-            $("#wins").text(wins);
-            $("#losses").text(losses);
-            $("#current-user-score").text(counter);
-
-            //generate random number for computer, and random number array to assign to gemvalues//
+            //generate random number from 1-12 and assign 4 into new array//
             var gemArray = []
             while (gemArray.length < 4) {
                 var r = Math.floor(Math.random() * 11) + 1;
@@ -81,26 +101,67 @@
             console.log(gemArray);
 
 
-            
+            //create for loop that will assign each crystal a random number from new array of 4//
+            for (var i = 0; i < gemArray.length; i++) {
+
+                //crystal img tag created//
+                var imageCrystal = $("<img>");
+
+                //each new crystal tag is also assigned a new class//
+                imageCrystal.addClass("crystal-image");
+
+                //actual image is attached to tag//
+                imageCrystal.attr("src", "assets/images/gem.png");
+
+                //random value from array is assigned//
+                imageCrystal.attr("data-crystalvalue", gemArray[i]);
+
+                //attributes are combined and then rendered to page via ID//
+                $("#crystals").append(imageCrystal);
+            }
+
+
+
+            //initiate on-click for desired process once image is clicked//
+            $(".crystal-image").on("click", function () {
+
+                // Determining the crystal's value requires us to extract the value from the data attribute.
+                // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+                // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+                // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
+
+                var crystalValue = ($(this).attr("data-crystalvalue"));
+                crystalValue = parseInt(crystalValue);
+                // We then add the crystalValue to the user's "counter" which is a global variable.
+                // Every click, from every crystal adds to the global counter.
+                counter += crystalValue;
+                console.log(counter);
+                updatedisplay();
+
+
+
+
+                if (counter === targetNumber) {
+                    wins++;
+                    updatedisplay();
 
 
 
 
 
+                }
+
+                else if (counter >= targetNumber) {
+                    losses++;
+                    resetScores();
+
+                }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
+            });
 
         });
 

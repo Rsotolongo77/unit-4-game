@@ -3,6 +3,7 @@
 body { 
 
     background-image: url(../images/mine.png);
+    text-align: center;
     
 
 }
@@ -37,10 +38,17 @@ h2 {
     vertical-align: top;
     color: rgb(231, 186, 103);
     font-family: 'Aclonica', sans-serif;
-    margin-left: 5%;
+    margin-left: 3%;
     padding-top: 1%;
 
     
 }
 
 
+.crystal-image  {
+
+    height: 15%;
+    width: 15%;
+    text-align: center;
+    
+}
