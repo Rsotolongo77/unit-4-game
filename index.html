@@ -7,13 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!--appropriate links established-->
-
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Aclonica|Sue+Ellen+Francisco&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Crystal Collector</title>
 
 </head>
 
@@ -29,19 +28,68 @@
 
     <!--nav area with scores, wins, losses, and restart-->
     <div class="navBarControl">
-        <h2>Number to match: <span id="number-to-guess"></span></h2>
+        <h2>Number to match: <span id="number-to-match"></span></h2>
         <h2>user score: <span id="current-user-score"></span></h2>
         <h2>Wins: <span id="wins"></span></h2>
         <h2>Losses: <span id="losses"></span></h2>
         <h2 class=""></h2>
         <h2 class=""></h2>
-        <button type="button" class="btn btn-outline-danger">Restart Game</button>
+        <button type="button" class="btn btn-outline-danger mt-2">Restart Game</button>
     </div>
 
     <!--crystal images with random assigned values-->
     <div id="crystals"></div>
 
 
+
+
+
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            //create variables//
+            var wins = 0;
+            var losses = 0;
+            var counter = 0;
+            var targetNumber = Math.floor(Math.random() * (120 - 19) + 19);
+            var gemValue = Math.floor(Math.random() * 12) + 1;
+            console.log (gemValue);
+
+
+
+
+            //sink into number to match html to render random number//
+
+            $("#number-to-match").text(targetNumber);
+            $("#wins").text(wins);
+            $("#losses").text(losses);
+            $("#current-user-score").text(counter);
+
+
+        });
+
+    </script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 
 

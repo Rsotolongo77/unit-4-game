@@ -2,9 +2,41 @@
 
 $(document).ready(function() {
 
-    //make variable for random computer generated number//
+    //create variables//
     var targetNumber = [];
+    var counter = 0;
+    var numberOptions = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+
+
+
+    //sink into number to match html to render random number//
+
+    $("#number-to-match").text(targetNumber);
+
     
+    var singleRandom = numberOptions[Math.floor(Math.random() * numberOptions.length)];
+    alert(singleRandom);
+     
+
+
+    //create loop to select random number and asign it to a crystal//
+        for (var i = 0; i < numberOptions.length; i++) {
+        var imageCrystal = $("<img>");
+    
+    //make a class for crystal with jquery to hook into//    
+        imageCrystal.addClass("crystal-image");
+    
+        //and attribute to crystal for image and random number assignment//
+        imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
+        imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+    
+        //will render image with value (unseen) to page//
+        $("#crystals").append(imageCrystal);
+      }
+
+
+
     
     
     });
