@@ -6,3 +6,25 @@ body {
     
 
 }
+
+/* adjusting .jumbotron settings*/
+
+.jumbotron {
+
+    background: linear-gradient(rgb(224, 203, 107), rgb(148, 122, 18));
+    padding-bottom: .5rem;
+    padding-top: 0;
+    opacity: .9;
+    color: rgb(7, 6, 88);
+    font-family: 'Aclonica', sans-serif;
+    text-align: center;
+    
+}
+
+.lead {
+
+    color: black;
+    opacity: none;
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: x-large;
+}
