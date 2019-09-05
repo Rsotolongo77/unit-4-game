@@ -33,7 +33,6 @@
         <h2>Wins: <span id="wins"></span></h2>
         <h2>Losses: <span id="losses"></span></h2>
         <h2 class=""></h2>
-        <h2 class=""></h2>
         <button type="button" class="btn btn-outline-danger mt-2">Restart Game</button>
     </div>
 
@@ -60,21 +59,51 @@
             var losses = 0;
             var counter = 0;
             var targetNumber = Math.floor(Math.random() * (120 - 19) + 19);
-            var gemValue = Math.floor(Math.random() * 12) + 1;
-            console.log (gemValue);
 
 
 
 
-            //sink into number to match html to render random number//
+
+
+            //sink into html to render random number results//
 
             $("#number-to-match").text(targetNumber);
             $("#wins").text(wins);
             $("#losses").text(losses);
             $("#current-user-score").text(counter);
 
+            //generate random number for computer, and random number array to assign to gemvalues//
+            var gemArray = []
+            while (gemArray.length < 4) {
+                var r = Math.floor(Math.random() * 11) + 1;
+                if (gemArray.indexOf(r) === -1) gemArray.push(r);
+            }
+            console.log(gemArray);
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         });
+
 
     </script>
 
