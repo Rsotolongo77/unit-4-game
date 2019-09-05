@@ -20,7 +20,9 @@
     <!--Game introduced and directions set-->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
+                
             <h1 class="display-3">Crystal Collector</h1>
+            
             <p class="lead">Click on the crystals to produce random crystal points. Match the exact amount of crystal
                 points the computer generates and prove your crystal wizardry!</p>
         </div>
@@ -34,6 +36,7 @@
         <h2>Losses: <span id="losses"></span></h2>
         <h2 class=""></h2>
         <button id="restart">Restart Game</button>
+        
     </div>
 
     <br>
@@ -69,6 +72,15 @@
             }
             generateTargetNumber();
 
+            $("#restart").on("click", function () {
+
+                resetScores();
+                updatedisplay();
+                $(".crystal-image").on("click");
+
+
+            });
+
             //Hook into html to render random number results and update accordingly//
             function updatedisplay() {
                 $("#number-to-match").text(targetNumber);
@@ -97,7 +109,7 @@
                 //each new crystal tag is also assigned a new class//
                 imageCrystal.addClass("crystal-image");
                 //actual image is attached to tag//
-                imageCrystal.attr("src", "assets/images/gem.png");
+                imageCrystal.attr("src", "assets/images/diamond.png");
                 //random value from array is assigned//
                 imageCrystal.attr("data-crystalvalue", gemArray[i]);
                 //attributes are combined and then rendered to page via ID//
@@ -125,7 +137,7 @@
                     updatedisplay();
                     $(".crystal-image").off("click");
 
-                    
+
 
 
                 }
@@ -134,7 +146,7 @@
                     updatedisplay();
                     $(".crystal-image").off("click");
 
-                    
+
 
 
                 }
