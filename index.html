@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <!--appropriate links established-->
 
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Aclonica|Sue+Ellen+Francisco&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 
 </head>
+
 <body>
-  <!--Game introduced and directions set-->
+    <!--Game introduced and directions set-->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-3">Crystal Collector</h1>
-          <p class="lead">Click on the crystals to produce random crystal points. Match the exact amount of crystal points the computer generates and prove your crystal wizardry!</p>
+            <h1 class="display-3">Crystal Collector</h1>
+            <p class="lead">Click on the crystals to produce random crystal points. Match the exact amount of crystal
+                points the computer generates and prove your crystal wizardry!</p>
         </div>
-      </div>  
-    
+    </div>
+
+    <!--nav area with scores, wins, losses, and restart-->
+    <div class="navBarControl">
+        <h2>Number to match: <span id="number-to-guess"></span></h2>
+        <h2>user score: <span id="current-user-score"></span></h2>
+        <h2>Wins: <span id="wins"></span></h2>
+        <h2>Losses: <span id="losses"></span></h2>
+        <h2 class=""></h2>
+        <h2 class=""></h2>
+        <button type="button" class="btn btn-outline-danger">Restart Game</button>
+    </div>
+
+    <!--crystal images with random assigned values-->
+    <div id="crystals"></div>
+
 
 
 
@@ -34,4 +52,5 @@
 
 
 </body>
+
 </html>

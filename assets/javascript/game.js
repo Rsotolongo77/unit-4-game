@@ -2,7 +2,9 @@
 
 $(document).ready(function() {
 
-    // Your code here...
+    //make variable for random computer generated number//
+    var targetNumber = [];
+    
     
     
     });

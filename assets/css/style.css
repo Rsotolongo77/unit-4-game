@@ -21,6 +21,7 @@ body {
     
 }
 
+/*styling specific text in jumbotron*/
 .lead {
 
     color: black;
@@ -28,3 +29,18 @@ body {
     font-family: 'Sue Ellen Francisco', cursive;
     font-size: x-large;
 }
+
+/* style h2*/
+h2 {
+
+    display: inline-block;
+    vertical-align: top;
+    color: rgb(231, 186, 103);
+    font-family: 'Aclonica', sans-serif;
+    margin-left: 5%;
+    padding-top: 1%;
+
+    
+}
+
+
