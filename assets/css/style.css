@@ -55,7 +55,9 @@ h2 {
 
     height: 15%;
     width: 15%;
-    opacity: .9;
+    opacity: .8;
+    border-radius: 10px;
+    background:linear-gradient(to bottom, rgba(209, 63, 63, 0.911),rgba(201, 136, 16, 0.863), rgba(47, 47, 170, 0.76));
     
 }   
     
