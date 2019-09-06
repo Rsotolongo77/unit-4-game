@@ -12,6 +12,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Aclonica|Sue+Ellen+Francisco&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
     <title>Crystal Collector</title>
 
 </head>
@@ -50,12 +51,6 @@
 
 
 
-
-
-
-
-
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script type="text/javascript">
@@ -64,13 +59,14 @@
             var wins = 0;
             var losses = 0;
             var counter = 0;
-            //generate random number for user to match//
 
+
+            //generate random number for user to match//
             var targetNumber = [];
             function generateTargetNumber() {
                 targetNumber = Math.floor(Math.random() * (120 - 19) + 19);
             }
-            generateTargetNumber();
+
 
 
 
@@ -83,42 +79,59 @@
                 $("#losses").text(losses);
                 $("#current-user-score").text(counter);
             }
-            updatedisplay();
+
 
 
             function resetScores() {
                 counter = 0;
                 generateTargetNumber();
             };
+
+
+
             //generate random number from 1-12 and assign 4 into new array//
-            var gemArray = []
-            while (gemArray.length < 4) {
-                var r = Math.floor(Math.random() * 11) + 1;
-                if (gemArray.indexOf(r) === -1) gemArray.push(r);
+            function generateNewGame() {
+                $("#crystals").empty();
+                var gemArray = []
+                while (gemArray.length < 4) {
+                    var r = Math.floor(Math.random() * 11) + 1;
+                    if (gemArray.indexOf(r) === -1) gemArray.push(r);
+                }
+                console.log(gemArray);
+
+
+
+
+                //create for loop that will assign each crystal a random number from new array of 4//
+                for (var i = 0; i < gemArray.length; i++) {
+                    //crystal img tag created//
+                    var imageCrystal = $("<img>");
+                    //each new crystal tag is also assigned a new class//
+                    imageCrystal.addClass("crystal-image crystalStyle");
+                    //actual image is attached to tag//
+                    imageCrystal.attr("src", "assets/images/diamond.png");
+                    //random value from array is assigned//
+                    imageCrystal.attr("data-crystalvalue", gemArray[i]);
+                    //attributes are combined and then rendered to page via ID//
+                    $("#crystals").append(imageCrystal);
+                }
+
+                generateTargetNumber();
+                updatedisplay();
+                
             }
-            console.log(gemArray);
-            //create for loop that will assign each crystal a random number from new array of 4//
 
-
-            for (var i = 0; i < gemArray.length; i++) {
-                //crystal img tag created//
-                var imageCrystal = $("<img>");
-                //each new crystal tag is also assigned a new class//
-                imageCrystal.addClass("crystal-image");
-                //actual image is attached to tag//
-                imageCrystal.attr("src", "assets/images/diamond.png");
-                //random value from array is assigned//
-                imageCrystal.attr("data-crystalvalue", gemArray[i]);
-                //attributes are combined and then rendered to page via ID//
-                $("#crystals").append(imageCrystal);
-            }
-
-            //restart game//
+            generateNewGame();
+            
+            
+            //restart game link created//
             $("#restart").on("click", function () {
 
                 resetScores();
                 updatedisplay();
-                $(".crystal-image").on("click");
+                generateNewGame();
+
+
 
             });
 
@@ -127,7 +140,7 @@
 
 
             //initiate on-click for desired process once image is clicked//
-            $(".crystal-image").on("click", function () {
+            $(document).on("click", ".crystal-image", function () {
 
 
                 //puts in data value appended to image into integer form. applies new variable holding this integer//
@@ -144,7 +157,10 @@
                 if (counter == targetNumber) {
                     wins++;
                     updatedisplay();
-                    $(".crystal-image").off("click");
+                    $(".crystal-image").removeClass(".crystal-image");
+
+
+
 
 
 
@@ -153,9 +169,11 @@
 
                 //enter conditionals to determine game outcome//
                 else if (counter >= targetNumber) {
-                    losses++;
+                    losses++
                     updatedisplay();
-                    $(".crystal-image").off("click");
+                    $(".crystal-image").removeClass("crystal-image");
+
+
 
                 }
 
@@ -178,6 +196,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+   
 
 
 
