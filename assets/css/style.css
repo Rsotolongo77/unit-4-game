@@ -4,6 +4,8 @@ body {
 
     background-image: url(../images/mine.png);
     text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     
 
 }
