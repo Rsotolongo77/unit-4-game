@@ -41,7 +41,7 @@ $(document).ready(function () {
         $("#crystals").empty();
         var gemArray = []
         while (gemArray.length < 4) {
-            var r = Math.floor(Math.random() * 11) + 1;
+            var r = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
             if (gemArray.indexOf(r) === -1) { gemArray.push(r) };
         }
         console.log(gemArray);
